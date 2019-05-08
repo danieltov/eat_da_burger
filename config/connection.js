@@ -1,7 +1,11 @@
-// Set up MySQL connection.
+// * The Requires
+// * ========================================
 const mysql = require('mysql');
 const dot = require('dotenv').config();
 
+// * The Connection Configuration
+// * Secured With DOTENV
+// * ========================================
 const connection = mysql.createConnection({
     host: process.env.DB_HOST,
     port: 3306,
@@ -10,7 +14,8 @@ const connection = mysql.createConnection({
     database: 'burgers_db'
 });
 
-// Make connection.
+// * Starting the Connection
+// * ========================================
 connection.connect(function(err) {
     if (err) {
         console.error('error connecting: ' + err.stack);
@@ -19,5 +24,6 @@ connection.connect(function(err) {
     console.log('connected as id ' + connection.threadId);
 });
 
-// Export connection for our ORM to use.
+// * The Export
+// * ========================================
 module.exports = connection;
