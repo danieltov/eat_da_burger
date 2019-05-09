@@ -4,6 +4,9 @@ const connection = require('./connection');
 
 // * The Helper Functions
 // * ========================================
+
+const log = console.log;
+
 function printQuestionMarks(num) {
     // ! Declare an empty array
     let arr = [];
@@ -70,7 +73,7 @@ const orm = {
         // ! To avoid SQL injection
         queryStr += printQuestionMarks(vals.length) + ');';
 
-        console.log(queryStr); // ! check queryStr string
+        log(queryStr); // ! check queryStr string
 
         // ! Run query, pass through vals array, run handler callback
         connection.query(queryStr, vals, function(e, r) {
@@ -87,7 +90,7 @@ const orm = {
         // ! Convert to SQL friendly format with Helper Fn
         queryStr += 'SET' + objToSql(data);
         queryStr += 'WHERE' + condition;
-        console.log(query); // ! check queryStr string
+        log(query); // ! check queryStr string
 
         // ! Run query
         connection.query(queryStr, function(e, r) {
