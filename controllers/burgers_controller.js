@@ -6,7 +6,7 @@ const express = require('express');
 // ! Import the model to use its database specific methods
 const burger = require('../models/burger');
 
-// * The Routes
+// * The Routes & Logic
 // * ========================================
 const router = express.Router();
 
@@ -21,6 +21,8 @@ router.get('/', function(req, res) {
         log(hbObj);
 
         // ! Use the view to render the data
+        // ? This is confusing because it seems like the Controller is doing...
+        // ? ...the View's job.
         res.render('index', hbObj);
     });
 });
@@ -42,7 +44,28 @@ router.post('/api/burgers', function(req, res) {
 
 // ! The 'update' route
 router.put('/api/burger/:id', function(req, res) {
-    burger.update(callback);
+    // ! Declare the condition (:id)
+    let condition = 'id = ' + req.params.id;
+
+    //! Log the condition
+    log('(Condition) WHERE ' + condition);
+
+    // ! Declare object with the column-values
+    let devouredData = { devoured: req.params.devoured };
+    // ! Log the devoured Data
+    log('Devoured object: \n' + JSON.stringify(devouredData));
+
+    // ! Invoke .update() method and pass through new variables
+    // ! Capture result in the callback
+    burger.update(devouredData, condition, function(result) {
+        if (result.changedRows == 0) {
+            // ! If no rows were changed, then the ID must not exist, so return 404
+            return res.status(404).end();
+        } else {
+            // ! If >0 rows changed, it worked! Return 200 and end.
+            res.status(200).end();
+        }
+    });
 });
 
 // * The Export
