@@ -21,8 +21,6 @@ router.get('/', function(req, res) {
         log(hbObj);
 
         // ! Use the view to render the data
-        // ? This is confusing because it seems like the Controller is doing...
-        // ? ...the View's job.
         res.render('index', hbObj);
     });
 });
@@ -36,7 +34,6 @@ router.post('/api/burgers', function(req, res) {
         ['burger_name', 'devoured'],
         [req.body.name, req.body.devoured],
         function(result) {
-            // ? 'Send back the ID of the new record'... Why? What does this do?
             res.json({ id: result.insertID });
         }
     );
