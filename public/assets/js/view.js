@@ -47,6 +47,4 @@ $(function() {
             location.reload();
         });
     });
-
-    $();
 });

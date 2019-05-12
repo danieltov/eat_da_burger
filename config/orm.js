@@ -68,7 +68,7 @@ const orm = {
         // ! cols is an array, so convert into
         // ! comma-separated string
         queryStr += '(' + cols.toString() + ')';
-        queryStr += 'VALUES (';
+        queryStr += ' VALUES (';
         // ! vals is an array. Print question marks in place
         // ! To avoid SQL injection
         queryStr += printQuestionMarks(vals.length) + ');';
@@ -88,9 +88,9 @@ const orm = {
         // ! data is an object
         // ! e.g. {name: 'Daniel', age: 28}
         // ! Convert to SQL friendly format with Helper Fn
-        queryStr += 'SET ' + objToSql(data);
-        queryStr += 'WHERE ' + condition;
-        log(query); // ! check queryStr string
+        queryStr += ' SET ' + objToSql(data);
+        queryStr += ' WHERE ' + condition;
+        log(queryStr); // ! check queryStr string
 
         // ! Run query
         connection.query(queryStr, function(e, r) {

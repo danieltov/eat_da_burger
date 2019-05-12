@@ -49,9 +49,9 @@ router.put('/api/burgers/:id', function(req, res) {
     log('(Condition) WHERE ' + condition);
 
     // ! Declare object with the column-values
-    let devouredData = { devoured: req.params.devoured };
+    let devouredData = req.body;
     // ! Log the devoured Data
-    log('Devoured object: \n' + JSON.stringify(devouredData));
+    log('Devoured : ' + devouredData);
 
     // ! Invoke .update() method and pass through new variables
     // ! Capture result in the callback
