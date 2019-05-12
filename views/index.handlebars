@@ -22,13 +22,21 @@
     <div class="col p-3 m-0 bg-danger">
         <h2 class="display display-3 text-center">Burga Hall o Fame</h2>
         <hr class="text-center w-50">
-        {{#each burgers }}
-        {{#if devoured}}
-        <!-- Devoured Burgers Here -->
-        <img src="assets/img/burger.png">
-        <button class="btn btn-lg bg-info btn-devour" data-id={{id}}>Devour!</button>
-        {{/if}}
-        {{/each}}
+        <div class="card-columns m-3">
+            {{#each burgers }}
+            {{#if devoured}}
+            <!-- Devoured Burgers Here -->
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-title">{{burger_name}}</div>
+                    <div class="card-text text-center">
+                        <img src=" assets/img/burger.png">
+                    </div>
+                </div>
+            </div>
+            {{/if}}
+            {{/each}}
+        </div>
     </div>
 </div>
 
