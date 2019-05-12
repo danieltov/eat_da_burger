@@ -17,7 +17,7 @@ router.get('/', function(req, res) {
         // ! Bind the data into an object for the view (handlebars) to use
         let hbObj = { burgers: data };
 
-        // ! Log the new object
+        // ! Log thƒe new object
         log(hbObj);
 
         // ! Use the view to render the data
@@ -40,7 +40,7 @@ router.post('/api/burgers', function(req, res) {
 });
 
 // ! The 'update' route
-router.put('/api/burger/:id', function(req, res) {
+router.put('/api/burgers/:id', function(req, res) {
     // ! Declare the condition (:id)
     let condition = 'id = ' + req.params.id;
 
