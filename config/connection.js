@@ -6,7 +6,7 @@ const dot = require('dotenv').config();
 // * The Connection Configuration
 // * Secured With DOTENV
 // * ========================================
-let connection;
+var connection;
 
 if (process.env.JAWSDB_URL) {
     connection = mysql.createConnection(process.env.JAWSDB_URL);
