@@ -1,9 +1,6 @@
 // ! Wait until the document is fully loaded before starting logic
 
 $(function() {
-    // ! Enable Bootstrap tooltips
-    $('[data-toggle="tooltip"]').tooltip();
-
     // ! Create burger function on click
     $('.btn-add').on('click', function(e) {
         // ! Prevent submit event
@@ -16,6 +13,8 @@ $(function() {
                 .trim(),
             devoured: $('input:checked').val()
         };
+
+        $('#bn').val('');
 
         // ! Create an ajax post call and pass in the newBurger object
         $.ajax('/api/burgers', {
