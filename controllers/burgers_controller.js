@@ -8,6 +8,7 @@ const burger = require('../models/burger');
 
 // * The Routes & Logic
 // * ========================================
+const log = console.log;
 const router = express.Router();
 
 // ! The 'all' route

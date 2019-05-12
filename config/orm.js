@@ -56,7 +56,7 @@ const orm = {
     // ! Select All Function
     selectAll: function(table, cb) {
         // ! Run mysql queryStr from 'table'
-        connection.query('select * from' + table + ';', function(e, r) {
+        connection.query('select * from ' + table + ';', function(e, r) {
             if (e) throw e;
             // ! Pass result into the callback
             cb(r);
@@ -64,7 +64,7 @@ const orm = {
     },
     insertOne: function(table, cols, vals, cb) {
         // ! Build mysql query
-        let queryStr = 'INSERT INTO' + table;
+        let queryStr = 'INSERT INTO ' + table;
         // ! cols is an array, so convert into
         // ! comma-separated string
         queryStr += '(' + cols.toString() + ')';
@@ -88,8 +88,8 @@ const orm = {
         // ! data is an object
         // ! e.g. {name: 'Daniel', age: 28}
         // ! Convert to SQL friendly format with Helper Fn
-        queryStr += 'SET' + objToSql(data);
-        queryStr += 'WHERE' + condition;
+        queryStr += 'SET ' + objToSql(data);
+        queryStr += 'WHERE ' + condition;
         log(query); // ! check queryStr string
 
         // ! Run query
